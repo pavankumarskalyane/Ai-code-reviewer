@@ -8,7 +8,7 @@ function App() {
 
   const handleReview = async () => {
     try {
-      const response = await fetch("http://localhost:5000/ai/get-review", {
+      const response = await fetch("https://ai-code-reviewer-3qad.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code }),
