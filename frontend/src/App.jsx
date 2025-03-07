@@ -8,8 +8,7 @@ function App() {
 
   const handleReview = async () => {
     try {
-     const response = await fetch("https://ai-code-reviewer-backend-tgbk.onrender.com/review", {
-
+      const response = await fetch("https://ai-code-reviewer-backend-tgbk.onrender.com/ai/review", { // Fixed URL
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code }),
