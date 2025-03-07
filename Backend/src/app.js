@@ -1,13 +1,21 @@
-const express = require('express');
-const aiRoutes = require('./routes/ai.routes');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const aiRoutes = require("./src/routes/aiRoutes.js");
 
-const [code, setCode] = useState("");
-const [review, setReview] = useState("");
+const app = express();
+app.use(express.json());
+app.use(cors()); // Enable CORS for frontend communication
 
-const app = express()
-app.use(express.json()); 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-app.use('/ai', aiRoutes)
+// Default Route
+app.get("/", (req, res) => {
+  res.send("AI Code Review API is running!");
+});
+
+// AI Review Routes
+app.use("/ai", aiRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 module.exports = app;
